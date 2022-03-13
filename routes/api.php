@@ -23,3 +23,8 @@ Route::get('marcas/all', [MarcaController::class, 'index']);
 Route::post('marcas/new', [MarcaController::class, 'store']);
 Route::get('marcas/{marca}', [MarcaController::class, 'show']);
 Route::put('marcas/update/{marca}', [MarcaController::class, 'update']);
+
+Route::get('tipovehiculos/all', [MarcaController::class, 'index']);
+Route::post('tipovehiculos/new', [MarcaController::class, 'store']);
+Route::get('tipovehiculos/{marca}', [MarcaController::class, 'show']);
+Route::put('tipovehiculos/update/{tipovehiculo}', [MarcaController::class, 'update']);
