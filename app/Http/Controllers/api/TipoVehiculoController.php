@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Marca;
-use App\Http\Requests\GuardarMarcaRequest;
-use App\Http\Requests\ActualizarMarcaRequest;
+use App\Models\TipoVehiculo;
+use App\Http\Requests\GuardarTipoVehiculoRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\ActualizarTipoVehiculoRequest;
 
-class MarcaController extends Controller
+class TipoVehiculoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        return Marca::all();
+        return TipoVehiculo::all();
+
     }
 
     /**
@@ -25,13 +27,13 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GuardarMarcaRequest $request)
+    public function store(GuardarTipoVehiculoRequest $request)
     {
-        $marca = Marca::create($request->all());
+        $tipo_vehiculo = TipoVehiculo::create($request->all());
         return response()->json([
             'res' => true,
-            'msg' => 'Marca guardada',
-            'data' => $marca
+            'msg' => 'Tipo de vehiculo guardado',
+            'data' => $tipo_vehiculo
         ],200);
     }
 
@@ -41,11 +43,11 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Marca $marca)
+    public function show(TipoVehiculo $tipo_vehiculo)
     {
         return response()->json([
             'res' => true,
-            'marca' => $marca
+            'tipo_vehiculo' => $tipo_vehiculo
         ],200);
     }
 
@@ -56,13 +58,13 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ActualizarMarcaRequest $request, Marca $marca)
+    public function update(ActualizarTipoVehiculoRequest $request, TipoVehiculo $tipo_vehiculo)
     {
-        $marca->update($request->all());
+        $tipo_vehiculo->update($request->all());
         return response()->json([
             'res' => true,
-            'msg' => 'Marca actualizada',
-            'data' => $marca
+            'msg' => 'Tipo de vehiculo actualizado',
+            'data' => $tipo_vehiculo
         ],200);
     }
 

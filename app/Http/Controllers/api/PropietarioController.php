@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Marca;
-use App\Http\Requests\GuardarMarcaRequest;
-use App\Http\Requests\ActualizarMarcaRequest;
+use Illuminate\Http\Request;
 
-class MarcaController extends Controller
+class PropietarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        return Marca::all();
+        //
     }
 
     /**
@@ -25,14 +23,9 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GuardarMarcaRequest $request)
+    public function store(Request $request)
     {
-        $marca = Marca::create($request->all());
-        return response()->json([
-            'res' => true,
-            'msg' => 'Marca guardada',
-            'data' => $marca
-        ],200);
+        //
     }
 
     /**
@@ -41,12 +34,9 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Marca $marca)
+    public function show($id)
     {
-        return response()->json([
-            'res' => true,
-            'marca' => $marca
-        ],200);
+        //
     }
 
     /**
@@ -56,14 +46,9 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ActualizarMarcaRequest $request, Marca $marca)
+    public function update(Request $request, $id)
     {
-        $marca->update($request->all());
-        return response()->json([
-            'res' => true,
-            'msg' => 'Marca actualizada',
-            'data' => $marca
-        ],200);
+        //
     }
 
     /**

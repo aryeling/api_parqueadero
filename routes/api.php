@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\MarcaController;
+use App\Http\Controllers\api\TipoVehiculoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::post('marcas/new', [MarcaController::class, 'store']);
 Route::get('marcas/{marca}', [MarcaController::class, 'show']);
 Route::put('marcas/update/{marca}', [MarcaController::class, 'update']);
 
-Route::get('tipovehiculos/all', [MarcaController::class, 'index']);
-Route::post('tipovehiculos/new', [MarcaController::class, 'store']);
-Route::get('tipovehiculos/{marca}', [MarcaController::class, 'show']);
-Route::put('tipovehiculos/update/{tipovehiculo}', [MarcaController::class, 'update']);
+Route::get('tipo_vehiculos/all', [TipoVehiculoController::class, 'index']);
+Route::post('tipo_vehiculos/new', [TipoVehiculoController::class, 'store']);
+Route::get('tipo_vehiculos/{tipo_vehiculo}', [TipoVehiculoController::class, 'show']);
+Route::put('tipo_vehiculos/update/{tipo_vehiculo}', [TipoVehiculoController::class, 'update']);
