@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class GuardarVehiculoRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class GuardarVehiculoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,21 @@ class GuardarVehiculoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'placa' => 'required|unique:vehiculos,placa',
+            'color'  => 'required',
+            'tipo_vehiculo_id' => 'required|exists:tipo_vehiculos,id',
+            'marca_id' => 'required|exists:marcas,id',
+            'propietario_id' => 'required',
+            'propietario_id.cedula' => 'required|unique:propietarios,cedula',
+            'propietario_id.nombre' => 'required',
+            'propietario_id.apellido' => 'required',
+            'propietario_id.sexo' => [
+                'required',
+                Rule::in(['Femenino', 'Masculino']),
+            ],
+            'propietario_id.fecha_nac' => 'date',
+            'propietario_id.telefono' => 'required',
+            'propietario_id.correo' => 'required|email'
         ];
     }
 }

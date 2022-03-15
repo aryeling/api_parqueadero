@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class GuardarPropietarioRequest extends FormRequest
 {
@@ -24,7 +25,16 @@ class GuardarPropietarioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cedula' => 'required|unique:propietarios,cedula',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'sexo' => [
+                'required',
+                Rule::in(['Femenino', 'Masculino']),
+            ],
+            'fecha_nac' => 'required|date',
+            'telefono' => 'required',
+            'correo' => 'required|email'
         ];
     }
 }
