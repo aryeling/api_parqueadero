@@ -28,7 +28,14 @@ const CrearTipoVehiculo = () =>
 const EditarTipoVehiculo = () =>
     import ('./components/tipo_vehiculo/EditarTipoVehiculoComponent.vue');
 
+const MostrarPropietarios = () =>
+    import ('./components/propietario/MostrarPropietarioComponent.vue');
 
+const CrearPropietario = () =>
+    import ('./components/propietario/CrearPropietarioComponent.vue');
+
+const EditarPropietario = () =>
+    import ('./components/propietario/EditarPropietarioComponent.vue');
 
 const routes = [{
         path: '/',
@@ -82,6 +89,25 @@ const routes = [{
         path: '/tipo_vehiculos/editar/:id',
         name: 'editarTipoVehiculo',
         component: EditarTipoVehiculo
+    },
+
+
+    {
+        path: '/propietarios',
+        name: 'mostrarPropietarios',
+        component: MostrarPropietarios
+    },
+
+    {
+        path: '/propietarios/crear',
+        name: 'crearPropietario',
+        component: CrearPropietario
+    },
+
+    {
+        path: '/propietarios/editar/:id',
+        name: 'editarPropietario',
+        component: EditarPropietario
     },
 ];
 

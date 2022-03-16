@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ActualizarPropietarioRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ActualizarPropietarioRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,16 @@ class ActualizarPropietarioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cedula' => 'required|unique:propietarios,cedula,'.$this->propietario->id.',id',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'sexo' => [
+                'required',
+                Rule::in(['Femenino', 'Masculino']),
+            ],
+            'fecha_nac' => 'date',
+            'telefono' => 'required',
+            'correo' => 'required|email'
         ];
     }
 }

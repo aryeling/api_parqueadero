@@ -5383,6 +5383,18 @@ var EditarTipoVehiculo = function EditarTipoVehiculo() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_tipo_vehiculo_EditarTipoVehiculoComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/tipo_vehiculo/EditarTipoVehiculoComponent.vue */ "./resources/js/components/tipo_vehiculo/EditarTipoVehiculoComponent.vue"));
 };
 
+var MostrarPropietarios = function MostrarPropietarios() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_propietario_MostrarPropietarioComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/propietario/MostrarPropietarioComponent.vue */ "./resources/js/components/propietario/MostrarPropietarioComponent.vue"));
+};
+
+var CrearPropietario = function CrearPropietario() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_propietario_CrearPropietarioComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/propietario/CrearPropietarioComponent.vue */ "./resources/js/components/propietario/CrearPropietarioComponent.vue"));
+};
+
+var EditarPropietario = function EditarPropietario() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_propietario_EditarPropietarioComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/propietario/EditarPropietarioComponent.vue */ "./resources/js/components/propietario/EditarPropietarioComponent.vue"));
+};
+
 var routes = [{
   path: '/',
   name: 'home',
@@ -5423,6 +5435,18 @@ var routes = [{
   path: '/tipo_vehiculos/editar/:id',
   name: 'editarTipoVehiculo',
   component: EditarTipoVehiculo
+}, {
+  path: '/propietarios',
+  name: 'mostrarPropietarios',
+  component: MostrarPropietarios
+}, {
+  path: '/propietarios/crear',
+  name: 'crearPropietario',
+  component: CrearPropietario
+}, {
+  path: '/propietarios/editar/:id',
+  name: 'editarPropietario',
+  component: EditarPropietario
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
@@ -43059,7 +43083,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_vehiculo_MostrarVehiculoComponent_vue":1,"resources_js_components_vehiculo_CrearVehiculoComponent_vue":1,"resources_js_components_vehiculo_EditarVehiculoComponent_vue":1,"resources_js_components_marca_MostrarMarcaComponent_vue":1,"resources_js_components_marca_CrearMarcaComponent_vue":1,"resources_js_components_marca_EditarMarcaComponent_vue":1,"resources_js_components_tipo_vehiculo_MostrarTipoVehiculoComponent_vue":1,"resources_js_components_tipo_vehiculo_CrearTipoVehiculoComponent_vue":1,"resources_js_components_tipo_vehiculo_EditarTipoVehiculoComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_vehiculo_MostrarVehiculoComponent_vue":1,"resources_js_components_vehiculo_CrearVehiculoComponent_vue":1,"resources_js_components_vehiculo_EditarVehiculoComponent_vue":1,"resources_js_components_marca_MostrarMarcaComponent_vue":1,"resources_js_components_marca_CrearMarcaComponent_vue":1,"resources_js_components_marca_EditarMarcaComponent_vue":1,"resources_js_components_tipo_vehiculo_MostrarTipoVehiculoComponent_vue":1,"resources_js_components_tipo_vehiculo_CrearTipoVehiculoComponent_vue":1,"resources_js_components_tipo_vehiculo_EditarTipoVehiculoComponent_vue":1,"resources_js_components_propietario_MostrarPropietarioComponent_vue":1,"resources_js_components_propietario_CrearPropietarioComponent_vue":1,"resources_js_components_propietario_EditarPropietarioComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

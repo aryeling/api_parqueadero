@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ActualizarPropietarioRequest;
+use App\Models\Propietario;
 use Illuminate\Http\Request;
+use App\Http\Requests\GuardarPropietarioRequest;
 
 class PropietarioController extends Controller
 {
@@ -14,7 +17,7 @@ class PropietarioController extends Controller
      */
     public function index()
     {
-        //
+        return Propietario::all();
     }
 
     /**
@@ -23,9 +26,14 @@ class PropietarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GuardarPropietarioRequest $request)
     {
-        //
+        $propietario = Propietario::create($request->all());
+        return response()->json([
+            'res' => true,
+            'msg' => 'Propietario guardado',
+            'data' => $propietario
+        ],200);
     }
 
     /**
@@ -34,9 +42,12 @@ class PropietarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Propietario $propietario)
     {
-        //
+        return response()->json([
+            'res' => true,
+            'propietario' => $propietario
+        ],200);
     }
 
     /**
@@ -46,9 +57,14 @@ class PropietarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ActualizarPropietarioRequest $request, Propietario $propietario)
     {
-        //
+        $propietario->update($request->all());
+        return response()->json([
+            'res' => true,
+            'msg' => 'Propietario actualizado',
+            'data' => $propietario
+        ],200);
     }
 
     /**
