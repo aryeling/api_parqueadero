@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-12 mb-4">
-            <router-link :to='{name:"crearVehiculo"}' class="btn btn-success">Nuevo</router-link>
+            <router-link :to='{name:"crearMarca"}' class="btn btn-success">Nuevo</router-link>
         </div>
          <div class="col-12">
             <div class="table-responsive">
@@ -18,7 +18,8 @@
                         <tr v-for="marca in marcas" :key="marca.id">
                             <td>{{ marca.id }}</td>
                             <td>{{ marca.descripcion }}</td>
-                            <td>{{ marca.activo }}</td>
+                            <td v-if=" marca.activo == 0" class="text-danger">Inactivo</td>
+                            <td v-else class="text-success">Activo</td>
                             <td>
                                 <!-- llamamos al componente para Editar     -->
                                 <router-link :to='{name:"editarMarca",params:{"id":marca.id}}' class="btn btn-info">Editar</router-link>

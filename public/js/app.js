@@ -5345,8 +5345,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var Home = function Home() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_HomeComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/HomeComponent.vue */ "./resources/js/components/HomeComponent.vue"));
-}; //const About = { template: '<div>About</div>' }
-
+};
 
 var MostrarVehiculo = function MostrarVehiculo() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_vehiculo_MostrarVehiculoComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/vehiculo/MostrarVehiculoComponent.vue */ "./resources/js/components/vehiculo/MostrarVehiculoComponent.vue"));
@@ -5358,8 +5357,19 @@ var CrearVehiculo = function CrearVehiculo() {
 
 var EditarVehiculo = function EditarVehiculo() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_vehiculo_EditarVehiculoComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/vehiculo/EditarVehiculoComponent.vue */ "./resources/js/components/vehiculo/EditarVehiculoComponent.vue"));
-}; //import ExampleComponent from "../js/components/ExampleComponent.vue";
+};
 
+var MostrarMarca = function MostrarMarca() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_marca_MostrarMarcaComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/marca/MostrarMarcaComponent.vue */ "./resources/js/components/marca/MostrarMarcaComponent.vue"));
+};
+
+var CrearMarca = function CrearMarca() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_marca_CrearMarcaComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/marca/CrearMarcaComponent.vue */ "./resources/js/components/marca/CrearMarcaComponent.vue"));
+};
+
+var EditarMarca = function EditarMarca() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_marca_EditarMarcaComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/marca/EditarMarcaComponent.vue */ "./resources/js/components/marca/EditarMarcaComponent.vue"));
+};
 
 var routes = [{
   path: '/',
@@ -5377,6 +5387,18 @@ var routes = [{
   path: '/vehiculos/editar/:id',
   name: 'editarVehiculo',
   component: EditarVehiculo
+}, {
+  path: '/marcas',
+  name: 'mostrarMarcas',
+  component: MostrarMarca
+}, {
+  path: '/marcas/crear',
+  name: 'crearMarca',
+  component: CrearMarca
+}, {
+  path: '/marcas/editar/:id',
+  name: 'editarMarca',
+  component: EditarMarca
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
@@ -43013,7 +43035,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_vehiculo_MostrarVehiculoComponent_vue":1,"resources_js_components_vehiculo_CrearVehiculoComponent_vue":1,"resources_js_components_vehiculo_EditarVehiculoComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_vehiculo_MostrarVehiculoComponent_vue":1,"resources_js_components_vehiculo_CrearVehiculoComponent_vue":1,"resources_js_components_vehiculo_EditarVehiculoComponent_vue":1,"resources_js_components_marca_MostrarMarcaComponent_vue":1,"resources_js_components_marca_CrearMarcaComponent_vue":1,"resources_js_components_marca_EditarMarcaComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
