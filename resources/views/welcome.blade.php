@@ -20,14 +20,11 @@
         <div class="row">
             <div class="col-md-12">
                 <navbar></navbar>
-                <div class="col-md-12">
+                <div class="col-md-12" style="padding-top: 5%">
                     <router-view></router-view>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </body>
 <script src="{{ mix('/js/app.js') }}"></script>

@@ -11,19 +11,18 @@
                         <router-link exact-active-class="active" class="nav-link active" aria-current="page" to="/">Inicio</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Vehiculos</a>
+                        <router-link exact-active-class="active" class="nav-link" aria-current="page" to="/vehiculos">Vehiculo</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Propietarios</a>
+                        <router-link exact-active-class="active" class="nav-link" aria-current="page" to="/propietarios">Propietario</router-link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Administración
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Marca</a></li>
-                            <li><a class="dropdown-item" href="#">Tipo de Vehiculo</a></li>
-
+                            <li><router-link exact-active-class="active" class="dropdown-item" aria-current="page" to="/marcas">Marca</router-link></li>
+                            <li><router-link exact-active-class="active" class="dropdown-item" aria-current="page" to="/tipoVehiculos">Tipo de Vehiculo</router-link></li>
                         </ul>
                     </li>
                 </ul>

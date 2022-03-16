@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\GuardarVehiculoRequest;
 use App\Http\Resources\MarcaResource;
+use App\Http\Requests\ActualizarVehiculoRequest;
 
 class VehiculoController extends Controller
 {
@@ -19,7 +20,10 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        return Vehiculo::all();
+        return Vehiculo::selectRaw('vehiculos.*, m.descripcion AS marca, tv.descripcion AS tipo_vehiculo, p.cedula, p.nombre, p.apellido' )
+        ->join('propietarios as p', 'p.id', '=', 'vehiculos.propietario_id')
+        ->join('marcas as m', 'm.id', '=', 'vehiculos.marca_id')
+        ->join('tipo_vehiculos as tv', 'tv.id', '=', 'vehiculos.tipo_vehiculo_id')->get();
     }
 
     /**
@@ -35,21 +39,21 @@ class VehiculoController extends Controller
             DB::transaction(function() use ($request) {
 
                 $propietario = Propietario::create([
-                    'cedula' => $request->input('propietario_id.cedula'),
-                    'nombre' => $request->input('propietario_id.nombre'),
-                    'apellido' => $request->input('propietario_id.apellido'),
-                    'sexo' => $request->input('propietario_id.sexo'),
-                    'fecha_nac' => $request->input('propietario_id.fecha_nac'),
-                    'telefono' => $request->input('propietario_id.telefono'),
-                    'correo' => $request->input('propietario_id.correo')
+                    'cedula' => $request->input('propietario.cedula'),
+                    'nombre' => $request->input('propietario.nombre'),
+                    'apellido' => $request->input('propietario.apellido'),
+                    'sexo' => $request->input('propietario.sexo'),
+                    'fecha_nac' => $request->input('propietario.fecha_nac'),
+                    'telefono' => $request->input('propietario.telefono'),
+                    'correo' => $request->input('propietario.correo')
                 ]);
 
 
                 $vehiculo = Vehiculo::create([
                     'placa' => $request->placa,
                     'color'=> $request->color,
-                    'tipo_vehiculo_id' => $request->input('tipo_vehiculo_id.id'),
-                    'marca_id' =>$request->input('marca_id.id'),
+                    'tipo_vehiculo_id' => $request->input('tipo_vehiculo'),
+                    'marca_id' =>$request->input('marca'),
                 ]);
 
                 $this->resp = $propietario->vehiculos()->save($vehiculo);
@@ -73,6 +77,12 @@ class VehiculoController extends Controller
      */
     public function show(Vehiculo $vehiculo)
     {
+        $vehiculo = Vehiculo::selectRaw('vehiculos.*, m.descripcion AS marca, tv.descripcion AS tipo_vehiculo, p.cedula, p.nombre, p.apellido, p.sexo, p.fecha_nac, p.correo, p.telefono' )
+        ->join('propietarios as p', 'p.id', '=', 'vehiculos.propietario_id')
+        ->join('marcas as m', 'm.id', '=', 'vehiculos.marca_id')
+        ->join('tipo_vehiculos as tv', 'tv.id', '=', 'vehiculos.tipo_vehiculo_id')
+        ->where('vehiculos.id',$vehiculo->id)->get();
+
         return response()->json([
             'res' => true,
             'vehiculo' => $vehiculo
@@ -86,9 +96,29 @@ class VehiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ActualizarVehiculoRequest $request, Vehiculo $vehiculo)
     {
-        //
+        $vehiculo->placa = $request->placa;
+        $vehiculo->color = $request->color;
+        $vehiculo->tipo_vehiculo_id = $request->input('tipo_vehiculo');
+        $vehiculo->marca_id = $request->input('marca');
+        $vehiculo->update();
+
+        $propietario = Propietario::find($vehiculo->propietario_id);
+        $propietario->cedula = $request->input('propietario.cedula');
+        $propietario->nombre = $request->input('propietario.nombre');
+        $propietario->apellido = $request->input('propietario.apellido');
+        $propietario->fecha_nac = $request->input('propietario.fecha_nac');
+        $propietario->sexo = $request->input('propietario.sexo');
+        $propietario->correo = $request->input('propietario.correo');
+        $propietario->telefono = $request->input('propietario.telefono');
+        $propietario->update();
+
+        return response()->json([
+            'res' => true,
+            'msg' => 'Registro actualizado',
+            'data' => $vehiculo
+        ],200);
     }
 
     /**
@@ -104,11 +134,7 @@ class VehiculoController extends Controller
                 ->groupBy('marcas.descripcion')
                 ->get();
 
-        return response()->json([
-            'res' => true,
-            'data' => MarcaResource::collection($report)
-        ],200);
-
+        return response()->json(MarcaResource::collection($report),200);
     }
 
     /**

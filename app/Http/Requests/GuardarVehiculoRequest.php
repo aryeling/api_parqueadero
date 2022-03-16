@@ -27,19 +27,19 @@ class GuardarVehiculoRequest extends FormRequest
         return [
             'placa' => 'required|unique:vehiculos,placa',
             'color'  => 'required',
-            'tipo_vehiculo_id' => 'required|exists:tipo_vehiculos,id',
-            'marca_id' => 'required|exists:marcas,id',
-            'propietario_id' => 'required',
-            'propietario_id.cedula' => 'required|unique:propietarios,cedula',
-            'propietario_id.nombre' => 'required',
-            'propietario_id.apellido' => 'required',
-            'propietario_id.sexo' => [
+            'tipo_vehiculo' => 'required|exists:tipo_vehiculos,id',
+            'marca' => 'required|exists:marcas,id',
+            'propietario' => 'required',
+            'propietario.cedula' => 'required|unique:propietarios,cedula',
+            'propietario.nombre' => 'required',
+            'propietario.apellido' => 'required',
+            'propietario.sexo' => [
                 'required',
                 Rule::in(['Femenino', 'Masculino']),
             ],
-            'propietario_id.fecha_nac' => 'date',
-            'propietario_id.telefono' => 'required',
-            'propietario_id.correo' => 'required|email'
+            'propietario.fecha_nac' => 'date',
+            'propietario.telefono' => 'required',
+            'propietario.correo' => 'required|email'
         ];
     }
 }

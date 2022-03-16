@@ -10,8 +10,11 @@ require('./bootstrap');
 import Vue from "vue";
 import VueRouter from 'vue-router'
 import routes from "./router";
+import VueAxios from 'vue-axios';
+import axios from 'axios';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
 
 const router = new VueRouter({
     hash: false,
@@ -20,7 +23,6 @@ const router = new VueRouter({
 
 
 Vue.component('navbar', require('./components/NavbarComponent.vue').default);
-
 
 const app = new Vue({
     el: '#app',

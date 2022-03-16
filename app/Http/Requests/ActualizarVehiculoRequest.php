@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ActualizarVehiculoRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ActualizarVehiculoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,21 @@ class ActualizarVehiculoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'placa' => 'required|unique:vehiculos,placa,'.$this->vehiculo->id.',id',
+            'color'  => 'required',
+            'tipo_vehiculo' => 'required|exists:tipo_vehiculos,id',
+            'marca' => 'required|exists:marcas,id',
+            'propietario' => 'required',
+            'propietario.cedula' => 'required|unique:propietarios,cedula,'.$this->vehiculo->propietario->id.',id',
+            'propietario.nombre' => 'required',
+            'propietario.apellido' => 'required',
+            'propietario.sexo' => [
+                'required',
+                Rule::in(['Femenino', 'Masculino']),
+            ],
+            'propietario.fecha_nac' => 'date',
+            'propietario.telefono' => 'required',
+            'propietario.correo' => 'required|email'
         ];
     }
 }
