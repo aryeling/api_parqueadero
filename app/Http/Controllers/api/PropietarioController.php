@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Marca;
-use App\Http\Requests\GuardarMarcaRequest;
-use App\Http\Requests\ActualizarMarcaRequest;
+use App\Http\Requests\ActualizarPropietarioRequest;
+use App\Models\Propietario;
+use Illuminate\Http\Request;
+use App\Http\Requests\GuardarPropietarioRequest;
 
-class MarcaController extends Controller
+class PropietarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        return Marca::all();
+        return Propietario::all();
     }
 
     /**
@@ -25,13 +26,13 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GuardarMarcaRequest $request)
+    public function store(GuardarPropietarioRequest $request)
     {
-        $marca = Marca::create($request->all());
+        $propietario = Propietario::create($request->all());
         return response()->json([
             'res' => true,
-            'msg' => 'Marca guardada',
-            'data' => $marca
+            'msg' => 'Propietario guardado',
+            'data' => $propietario
         ],200);
     }
 
@@ -41,11 +42,11 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Marca $marca)
+    public function show(Propietario $propietario)
     {
         return response()->json([
             'res' => true,
-            'marca' => $marca
+            'propietario' => $propietario
         ],200);
     }
 
@@ -56,24 +57,14 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ActualizarMarcaRequest $request, Marca $marca)
+    public function update(ActualizarPropietarioRequest $request, Propietario $propietario)
     {
-        $marca->update($request->all());
+        $propietario->update($request->all());
         return response()->json([
             'res' => true,
-            'msg' => 'Marca actualizada',
-            'data' => $marca
+            'msg' => 'Propietario actualizado',
+            'data' => $propietario
         ],200);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function marcasActiva()
-    {
-        return Marca::where('activo',true)->get();
     }
 
     /**
