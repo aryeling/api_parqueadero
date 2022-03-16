@@ -67,6 +67,16 @@ class MarcaController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function marcasActiva()
+    {
+        return Marca::where('activo',true)->get();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

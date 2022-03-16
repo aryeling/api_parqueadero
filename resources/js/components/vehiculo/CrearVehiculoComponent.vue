@@ -146,7 +146,7 @@ export default {
         },
 
         async mostrarMarcas(){
-            await this.axios.get('/api/marcas/all')
+            await this.axios.get('/api/marca/activo')
             .then(response =>{
                 this.marcas = response.data
             })
@@ -156,7 +156,7 @@ export default {
         },
 
         async mostrarTipoVehiculos(){
-            await this.axios.get('/api/tipo_vehiculos/all')
+            await this.axios.get('/api/tipo_vehiculo/activo')
             .then(response =>{
                 this.tipo_vehiculos = response.data
             })

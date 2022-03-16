@@ -19,6 +19,15 @@ const CrearMarca = () =>
 const EditarMarca = () =>
     import ('./components/marca/EditarMarcaComponent.vue');
 
+const MostrarTipoVehiculo = () =>
+    import ('./components/tipo_vehiculo/MostrarTipoVehiculoComponent.vue');
+
+const CrearTipoVehiculo = () =>
+    import ('./components/tipo_vehiculo/CrearTipoVehiculoComponent.vue');
+
+const EditarTipoVehiculo = () =>
+    import ('./components/tipo_vehiculo/EditarTipoVehiculoComponent.vue');
+
 
 
 const routes = [{
@@ -57,6 +66,22 @@ const routes = [{
         path: '/marcas/editar/:id',
         name: 'editarMarca',
         component: EditarMarca
+    },
+    {
+        path: '/tipo_vehiculos',
+        name: 'mostrarTipoVehiculos',
+        component: MostrarTipoVehiculo
+    },
+
+    {
+        path: '/tipo_vehiculos/crear',
+        name: 'crearTipoVehiculo',
+        component: CrearTipoVehiculo
+    },
+    {
+        path: '/tipo_vehiculos/editar/:id',
+        name: 'editarTipoVehiculo',
+        component: EditarTipoVehiculo
     },
 ];
 

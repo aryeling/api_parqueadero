@@ -22,7 +22,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><router-link exact-active-class="active" class="dropdown-item" aria-current="page" to="/marcas">Marca</router-link></li>
-                            <li><router-link exact-active-class="active" class="dropdown-item" aria-current="page" to="/tipoVehiculos">Tipo de Vehiculo</router-link></li>
+                            <li><router-link exact-active-class="active" class="dropdown-item" aria-current="page" to="/tipo_vehiculos">Tipo de Vehiculo</router-link></li>
                         </ul>
                     </li>
                 </ul>

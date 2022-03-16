@@ -68,6 +68,11 @@ class TipoVehiculoController extends Controller
         ],200);
     }
 
+    public function tipoVehiculoActivo()
+    {
+        return TipoVehiculo::where('activo',true)->get();
+    }
+
     /**
      * Remove the specified resource from storage.
      *

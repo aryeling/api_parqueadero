@@ -27,11 +27,13 @@ Route::get('marcas/all', [MarcaController::class, 'index']);
 Route::post('marcas/new', [MarcaController::class, 'store']);
 Route::get('marcas/{marca}', [MarcaController::class, 'show']);
 Route::put('marcas/update/{marca}', [MarcaController::class, 'update']);
+Route::get('marca/activo', [MarcaController::class, 'marcasActiva']);
 
 Route::get('tipo_vehiculos/all', [TipoVehiculoController::class, 'index']);
 Route::post('tipo_vehiculos/new', [TipoVehiculoController::class, 'store']);
 Route::get('tipo_vehiculos/{tipo_vehiculo}', [TipoVehiculoController::class, 'show']);
 Route::put('tipo_vehiculos/update/{tipo_vehiculo}', [TipoVehiculoController::class, 'update']);
+Route::get('tipo_vehiculo/activo', [TipoVehiculoController::class, 'tipoVehiculoActivo']);
 
 Route::get('propietarios/all', [PropietarioController::class, 'index']);
 Route::post('propietarios/new', [PropietarioController::class, 'store']);
