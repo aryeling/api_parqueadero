@@ -44,5 +44,5 @@ Route::get('vehiculos/all', [VehiculoController::class, 'index']);
 Route::post('vehiculos/new', [VehiculoController::class, 'store']);
 Route::get('vehiculos/{vehiculo}', [VehiculoController::class, 'show']);
 Route::get('vehiculo/cant_marca', [VehiculoController::class, 'getCantidadporMarca']);
-Route::get('vehiculo/buscar/{term}', [VehiculoController::class, 'buscar']);
+Route::get('vehiculo/buscar', [VehiculoController::class, 'buscar']);
 Route::put('vehiculos/update/{vehiculo}', [VehiculoController::class, 'update']);

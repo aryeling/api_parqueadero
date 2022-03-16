@@ -143,9 +143,9 @@ class VehiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function buscar($term)
+    public function buscar( Request $request)
     {
-        $search = '%'.$term.'%';
+        $search = '%'.$request->search.'%';
         $vehiculo = Vehiculo::selectRaw('vehiculos.*, tv.descripcion as tipo_vehiculo, m.descripcion as marca, p.nombre, p.apellido, p.cedula, p.telefono, p.correo')
                     ->join('propietarios as p', 'p.id', '=', 'vehiculos.propietario_id')
                     ->join('marcas as m', 'm.id', '=', 'vehiculos.marca_id')
@@ -154,12 +154,9 @@ class VehiculoController extends Controller
                     ->orWhere('p.cedula','LIKE',$search)
                     ->orWhere('p.nombre','LIKE',$search)
                     ->orWhere('p.apellido','LIKE',$search)
-                    ->paginate();
+                    ->get();
 
-        return response()->json([
-            'res' => true,
-            'vehiculo' => $vehiculo
-        ],200);
+        return response()->json($vehiculo,200);
     }
 
     /**

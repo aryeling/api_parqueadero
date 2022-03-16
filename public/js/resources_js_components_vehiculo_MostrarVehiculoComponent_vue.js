@@ -71,11 +71,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "vehiculos",
   data: function data() {
     return {
-      vehiculos: []
+      vehiculos: [],
+      search: "",
+      setTimeOutBuscador: ""
     };
   },
   mounted: function mounted() {
@@ -104,6 +122,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    buscar: function buscar() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this2.axios.get('/api/vehiculo/buscar', {
+                  params: {
+                    search: _this2.search
+                  }
+                }).then(function (response) {
+                  _this2.vehiculos = response.data;
+                })["catch"](function (error) {
+                  _this2.vehiculos = [];
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    buscarItem: function buscarItem() {
+      clearTimeout(this.setTimeOutBuscador);
+      this.setTimeOutBuscador = setTimeout(this.buscar, 360);
     }
   }
 });
@@ -965,7 +1014,7 @@ var render = function () {
   return _c("div", { staticClass: "row" }, [
     _c(
       "div",
-      { staticClass: "col-12 mb-4" },
+      { staticClass: "col-8 mb-4" },
       [
         _c(
           "router-link",
@@ -979,10 +1028,47 @@ var render = function () {
       1
     ),
     _vm._v(" "),
+    _c("div", { staticClass: "col-4 mb-4" }, [
+      _c("form", { staticClass: "d-flex" }, [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.search,
+                expression: "search",
+              },
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "search",
+              placeholder:
+                "Buscar por placa de vehículo, nombre o cédula del propietario",
+              "aria-label": "Search",
+              "aria-describedby": "basic-addon1",
+            },
+            domProps: { value: _vm.search },
+            on: {
+              keyup: _vm.buscarItem,
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.search = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _vm._m(0),
+        ]),
+      ]),
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "table-responsive" }, [
         _c("table", { staticClass: "table table-bordered" }, [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "tbody",
@@ -1035,6 +1121,16 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "span",
+      { staticClass: "input-group-text", attrs: { id: "basic-addon1" } },
+      [_c("i", { staticClass: "fa-solid fa-magnifying-glass" })]
+    )
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

@@ -229,7 +229,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _this3.axios.get('/api/marcas/all').then(function (response) {
+                return _this3.axios.get('/api/marca/activo').then(function (response) {
                   _this3.marcas = response.data;
                 })["catch"](function (error) {
                   _this3.marcas = [];
@@ -252,7 +252,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return _this4.axios.get('/api/tipo_vehiculos/all').then(function (response) {
+                return _this4.axios.get('/api/tipo_vehiculo/activo').then(function (response) {
                   _this4.tipo_vehiculos = response.data;
                 })["catch"](function (error) {
                   _this4.tipo_vehiculos = [];
