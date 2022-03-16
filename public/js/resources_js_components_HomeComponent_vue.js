@@ -24,6 +24,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -53,15 +55,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "vehiculos-marca",
   data: function data() {
     return {
-      items: []
+      items: [],
+      arreglo: []
     };
-  },
-  mounted: function mounted() {
-    this.mostrarCantidadVehiculosMarca();
   },
   methods: {
     mostrarCantidadVehiculosMarca: function mostrarCantidadVehiculosMarca() {
@@ -87,7 +92,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    arregloFunc: function arregloFunc() {
+      var _this2 = this;
+
+      // Your code here!
+      var array = [["2018-12-01", "AM", "ID123", 5000], ["2018-12-01", "AM", "ID545", 7000], ["2018-12-01", "PM", "ID545", 3000], ["2018-12-02", "AM", "ID545", 7000]];
+      var result = "";
+
+      for (var i = 0; i < 1; i++) {
+        result = array.reduceRight(function (hash, obj) {
+          if (obj[0] === undefined) return hash;
+          var primer = Object.assign(hash, _defineProperty({}, obj[i], (hash[obj[i]] || []).concat(obj)));
+          return _this2.arreglo = Object.assign({}, primer);
+        }, {});
+        this.arreglo = result;
+        console.log(result);
+      }
     }
+  },
+  mounted: function mounted() {
+    this.mostrarCantidadVehiculosMarca();
+    this.arregloFunc();
   }
 });
 
@@ -965,6 +991,10 @@ var render = function () {
             0
           ),
         ]),
+      ]),
+      _vm._v(" "),
+      _c("pre", [
+        _vm._v("              " + _vm._s(_vm.arreglo) + "\n          "),
       ]),
     ]),
   ])
